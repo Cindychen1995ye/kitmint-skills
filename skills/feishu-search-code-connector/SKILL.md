@@ -27,7 +27,7 @@ description: Connect a user-selected Feishu Bitable to Kitmint's search-code QR 
 若你的环境支持不向模型暴露输入值、不会记录或截图密钥的安全凭证窗口，打开该窗口让用户输入，并直接绑定到自动化 Authorization 配置。否则先打开飞书 HTTP 动作的 Authorization 输入框，指导用户亲自粘贴；不要假装存在安全窗口。不要将 Key 发到聊天、脚本日志、GitHub 或普通表格单元格。轮换旧 Key 会使旧自动化失效，先告知用户。
 
 ## 回写与验收
-API 自行生成带口令文字的默认 PNG，并上传、写回 Key 绑定表中同一口令的唯一行。「电子指南二维码图片」该行字段将被替换成最新一张 PNG；其他字段保留。默认二维码区30×30mm，标签总尺寸约30×35mm、600 DPI，长口令增加文字区高度。API 返回业务 JSON，例如 `{"ok":true,"search_code":"EXAMPLE","updated_field":"电子指南二维码图片","width":709,"height":827}`。不要另把 JSON 当图片，不再建立重复上传动作。
+API 自行生成带口令文字的默认 PNG，并上传、写回 Key 绑定表中同一口令的唯一行。「电子指南二维码图片」该行字段将被替换成最新一张 PNG；其他字段保留。默认二维码区30×30mm，标签总尺寸约30×40mm、600 DPI，长口令增加文字区高度。API 返回业务 JSON，例如 `{"ok":true,"search_code":"EXAMPLE","updated_field":"电子指南二维码图片","width":709,"height":945}`。不要另把 JSON 当图片，不再建立重复上传动作。
 
 ### AI 自行完成内部联调
 1. 在已选定表内创建专用临时测试行，`search_code` 自行生成唯一值，如 `KITMINT_TEST_日期_随机后缀`，先检查不重名。记录该行的 record_id。若首列必填，可填写“Kitmint 接入测试”；不填充或修改真实 SKU，不借用现有产品行。先检查新增行是否会触发其他业务自动化；如会触发，使用该表支持的隔离测试机制，不冒险触发采购等业务动作。
